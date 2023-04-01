@@ -10,7 +10,11 @@ import 'package:forra_web/shared/cubit/forraCubit.dart';
 
 import '../../../shared/cubit/forraStates.dart';
 
-Widget gameInfoBody(context,GameData model)=>Center(
+Widget gameInfoBody(context,GameData model)=> CustomScrollView(
+  slivers: [
+    SliverFillRemaining(
+      hasScrollBody: false,
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -180,7 +184,11 @@ Widget gameInfoBody(context,GameData model)=>Center(
                 ],
               ),
             ),
-
+            myFooter(context)
           ],
         ),
-      );
+      ),
+     
+    )
+  ],
+);
