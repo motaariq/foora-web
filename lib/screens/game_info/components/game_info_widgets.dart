@@ -15,15 +15,15 @@ Widget gameInfoBody(context,GameData model)=>Center(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 1309,
-              height: 630,
+              width: 1100,
+              height: 640,
               decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20))
               ),
               child: Row(
                 children: [
-                  Image(image: AssetImage('assets/images/stadium.jpg'),fit: BoxFit.contain,),
+                  Image(image: AssetImage('assets/images/stadium.jpg'),fit: BoxFit.contain,height: 500,width: 500,),
                   Padding(
                     padding: const EdgeInsets.all(41.0),
                     child: Column(
@@ -58,7 +58,7 @@ Widget gameInfoBody(context,GameData model)=>Center(
                             ),)
                           ],
                         ),
-                        SizedBox(height: 23,),
+                        SizedBox(height: 13,),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -73,7 +73,7 @@ Widget gameInfoBody(context,GameData model)=>Center(
                         ),
                         SizedBox(height: 15,),
 
-                        SizedBox(height: 15,),
+                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -121,7 +121,7 @@ Widget gameInfoBody(context,GameData model)=>Center(
                             ),)
                           ],
                         ),
-                        SizedBox(height: 23,),
+                        SizedBox(height: 13,),
                         InkWell(
                           onTap: (){
                             navigateTo(context, CaptinScreen.route);
