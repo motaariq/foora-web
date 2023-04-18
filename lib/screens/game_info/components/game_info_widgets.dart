@@ -55,7 +55,7 @@ Widget gameInfoBody(context,GameData model)=> CustomScrollView(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Icon(Icons.phone,color:Colors.blue[700]),
-                            Text('+2 ${model.phone}',style: TextStyle(
+                            Text('${model.phone}',style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                                 color: Colors.blue[700]
@@ -146,7 +146,7 @@ Widget gameInfoBody(context,GameData model)=> CustomScrollView(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Icon(Icons.check_circle_outline,color: Colors.green,),
-                            Text(' Scouted',style: TextStyle(
+                            Text(' ${model.type}',style: TextStyle(
 
                                 fontSize: 18,
                                 color: Colors.green

@@ -5,7 +5,7 @@ class GamesModel {
 
   GamesModel({this.success, this.data, this.message});
 
-  GamesModel.fromJson(Map<String, dynamic> json) {
+  GamesModel.fromJson(Map<dynamic, dynamic> json) {
     success = json['success'];
     if (json['data'] != null) {
       data = <GameData>[];
@@ -30,11 +30,14 @@ class GameData {
   UserJoinGameData? user;
   String? location;
   int? joinedPlayersCount;
+  String? type;
+  List<AcceptedPlayers>? acceptedPlayers;
 
 GameData(
-  this.user
+  this.user,
 );
-  GameData.fromJson(Map<String, dynamic> json) {
+
+  GameData.fromJson(Map<dynamic, dynamic> json) {
     id =  json['id'];
     venueName = json['venue_name'];
     phone = json['phone'];
@@ -44,9 +47,16 @@ GameData(
     time = json['time'];
     city = json['city'];
     area = json['area'];
+    type = json['type'];
     user = json['user'] != null ?  UserJoinGameData.fromJson(json['user']) : null;
     location = json['location'];
     joinedPlayersCount = json['joined_players_count'];
+       if (json['accepted_players'] != null) {
+      acceptedPlayers = <AcceptedPlayers>[];
+      json['accepted_players'].forEach((v) {
+        acceptedPlayers!.add(AcceptedPlayers.fromJson(v));
+      });
+    }
   }
 }
 
@@ -64,7 +74,7 @@ class UserJoinGameData {
 
   UserJoinGameData(
    {
-    this.id,
+     this.id,
     this.image,
     this.name,
     this.weight,
@@ -74,7 +84,7 @@ class UserJoinGameData {
   );
 
 
-  UserJoinGameData.fromJson(Map<String, dynamic> json) {
+  UserJoinGameData.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
@@ -85,5 +95,53 @@ class UserJoinGameData {
     phone = json['phone'];
     city = json['city'];
     area = json['area'];
+  }
+}
+
+class GamePlayersGameData {
+  int? id;
+  String? name;
+  String? email;
+  String? age;
+  String? height;
+  String? weight;
+  String? image;
+  String? phone;
+  String? city;
+  String? area;
+
+  GamePlayersGameData(
+   {
+     this.id,
+    this.image,
+    this.name,
+    this.weight,
+    this.height,
+    this.age
+   }
+  );
+
+
+  GamePlayersGameData.fromJson(Map<dynamic, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    age = json['age'];
+    height = json['height'];
+    weight = json['weight'];
+    image = json['image'];
+    phone = json['phone'];
+    city = json['city'];
+    area = json['area'];
+  }
+}
+
+class AcceptedPlayers {
+  GamePlayersGameData? data;
+
+  AcceptedPlayers({this.data});
+
+  AcceptedPlayers.fromJson(Map <dynamic,dynamic> json) {
+    data = json['data'] != null ?  GamePlayersGameData.fromJson(json['data']) : null;
   }
 }
